@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Version: 2024.11.04
+# Version: 2024.12.01
 
 DELETE_OLDER_THAN_DAYS=$1
 PERIOD_SECONDS="${2:-86400}" # Default: 24 hrs
