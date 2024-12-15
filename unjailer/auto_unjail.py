@@ -5,7 +5,7 @@ import logging
 import requests
 import subprocess
 import json
-from datetime import datetime
+import datetime
 import argparse
 import os
 
@@ -69,10 +69,10 @@ def validate_conditions(node, prom_url):
         return False
 
     is_jailed = validator_data.get("isJailed", False)
-    unjailable_after = validator_data.get("unjailableAfter")
+    unjailable_after = validator_data.get("unjailableAfter") // 1000
 
     if is_jailed and unjailable_after:
-        current_time = int(datetime.utcnow().timestamp())
+        current_time = int(datetime.datetime.now(tz=datetime.timezone.utc).timestamp())
         if current_time > unjailable_after:
             return True
         else:
